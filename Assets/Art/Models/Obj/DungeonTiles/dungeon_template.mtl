@@ -1,7 +1,7 @@
 # Blender MTL File: 'dungeon_template.blend'
 # Material Count: 1
 
-newmtl palette.012
+newmtl palette.015
 Ns 0.000000
 Ka 1.000000 1.000000 1.000000
 Kd 1.000000 1.000000 1.000000
@@ -10,4 +10,4 @@ Ke 0.0 0.0 0.0
 Ni 1.450000
 d 1.000000
 illum 1
-map_Kd D:\\MagicaVoxel\\MagicaVoxel-0.99.4-alpha-win64\\export\\DungeonCrawler\\obj\\door-0.png
+map_Kd D:\\MagicaVoxel\\MagicaVoxel-0.99.4-alpha-win64\\export\\DungeonCrawler\\obj\\pillar.png

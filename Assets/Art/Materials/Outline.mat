@@ -52,7 +52,7 @@ Material:
     - _AlphaClip: 0
     - _ApplyFog: 1
     - _Blend: 0
-    - _Border: 2
+    - _Border: 1
     - _BumpScale: 1
     - _Cull: 1
     - _Cutoff: 0.5
