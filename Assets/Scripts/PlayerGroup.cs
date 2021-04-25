@@ -27,11 +27,17 @@ public class PlayerGroup : MonoBehaviour
                 for (int i = 1; i < players.Length; i++)
                 {
                     var leader = players[i - 1];
-                    var distance = Vector3.Distance(leader.transform.position, players[i].transform.position);
+                    var currentPlayer = players[i];
+                    var distance = Vector3.Distance(leader.transform.position, currentPlayer.transform.position);
                     if (distance >= m_followThreshold)
                     {
-                        players[i].transform.position = Vector3.Lerp(players[i].transform.position, leader.transform.position, m_time / duration);
-                        players[i].transform.LookAt(leader.transform, Vector3.up);
+                        currentPlayer.transform.position = Vector3.Lerp(currentPlayer.transform.position, leader.transform.position, m_time / duration);
+                        currentPlayer.transform.LookAt(leader.transform, Vector3.up);
+                        currentPlayer.GetComponent<Animator>().SetInteger("State",1);
+                    }
+                    else
+                    {
+                        currentPlayer.GetComponent<Animator>().SetInteger("State", 0);
                     }
                 }
 

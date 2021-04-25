@@ -1027,7 +1027,7 @@ MonoBehaviour:
   - {fileID: 1501657635}
   - {fileID: 901890875}
   m_followThreshold: 3
-  m_duration: 600
+  m_duration: 1200
 --- !u!1001 &2146504224
 PrefabInstance:
   m_ObjectHideFlags: 0
