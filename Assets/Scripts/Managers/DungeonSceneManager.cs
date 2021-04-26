@@ -31,7 +31,12 @@ public class DungeonSceneManager : SceneManager
     {
         using (var tokenSource = new UnityTokenSource())
         {
-            await SetupSceneAsync(tokenSource.Token);
+            var token = tokenSource.Token;
+            await SetupSceneAsync(token, out RoomManager currentRoom);
+            await currentRoom?.SetupRoomAsync(token);
+
+            m_playerGroup = gameObject.GetComponent<PlayerGroup>();
+            m_playerGroup.Initialize();
         }
     }
 
@@ -39,9 +44,11 @@ public class DungeonSceneManager : SceneManager
 
     #region Protected Methods    
 
-    protected override Task SetupSceneAsync(CancellationToken token)
+    protected Task SetupSceneAsync(CancellationToken token, out RoomManager currentRoom)
     {
         token.ThrowIfCancellationRequested();
+
+        currentRoom = null;
 
         if (m_dungeons?.Length > 0)
         {
@@ -50,29 +57,21 @@ public class DungeonSceneManager : SceneManager
             {
                 if (m_dungeons[i].IsActive)
                 {
-                    foreach (var room in m_dungeons[i].Rooms)
+                    m_currentDungeon = m_dungeons[i];
+                    foreach (var room in m_currentDungeon.Rooms)
                     {
                         if (room.IsActive)
                         {
-                            room.InstantiatePrefab(transform, true);
+                            var roomInstance = room.InstantiatePrefab(transform, true);
+                            currentRoom = roomInstance.GetComponent<RoomManager>();
+                            // Skip out of the loop since we don't want to load all the dungeons at once.
+                            return Task.CompletedTask;
                         }
                     }
-
-                    m_playerGroup = gameObject.GetComponent<PlayerGroup>();
-                    m_playerGroup.Initialize();
-
-                    m_currentDungeon = m_dungeons[i];
-                    // Skip out of the loop since we don't want to load all the dungeons at once.
-                    break;
                 }
             }
         }
-        else
-        {
-            return Task.FromException(new Exception("Failed to initialize dungeon set-up."));
-        }
-
-        return Task.CompletedTask;
+        return Task.FromException(new Exception("Failed to initialize dungeon set-up."));
     }
 
     protected override Task RunIntroSequenceAsync(CancellationToken token)

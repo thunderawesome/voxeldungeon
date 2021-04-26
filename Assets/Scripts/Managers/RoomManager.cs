@@ -1,5 +1,4 @@
-﻿using Runtime.Common;
-using System;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -13,18 +12,6 @@ public class RoomManager : MonoBehaviour
 
     #endregion
 
-    #region Private Methods
-
-    private async void Awake()
-    {
-        using (var tokenSource = new UnityTokenSource())
-        {
-            await SetupRoomAsync(tokenSource.Token);
-        }
-    }
-
-    #endregion
-
     #region Protected Methods    
 
     /// <summary>
@@ -32,11 +19,11 @@ public class RoomManager : MonoBehaviour
     /// </summary>
     /// <param name="token"></param>
     /// <returns></returns>
-    protected Task SetupRoomAsync(CancellationToken token)
+    public Task SetupRoomAsync(CancellationToken token)
     {
         token.ThrowIfCancellationRequested();
 
-        if(m_monsters?.Length > 0)
+        if (m_monsters?.Length > 0)
         {
             // Spawn the monsters in a room
             for (int i = 0; i < m_monsters.Length; i++)
@@ -52,7 +39,7 @@ public class RoomManager : MonoBehaviour
         return Task.CompletedTask;
     }
 
-    protected Task RoomClearAsync(CancellationToken token)
+    public Task RoomClearAsync(CancellationToken token)
     {
         token.ThrowIfCancellationRequested();
 
