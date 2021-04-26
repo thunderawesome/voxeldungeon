@@ -8,10 +8,9 @@ public class Character : AbstractAsset
 
     #endregion
 
-
     #region Public Methods
 
-    public GameObject InstantiatePrefab(Transform targetTransform, bool worldPositionStays)
+    protected GameObject InstantiatePrefab(Transform targetTransform, bool worldPositionStays)
     {
         return Instantiate(m_prefab, targetTransform, worldPositionStays);
     }
@@ -21,9 +20,14 @@ public class Character : AbstractAsset
     #region Private Fields
 
     [SerializeField]
-    private GameObject m_prefab = null;
+    private int m_health = 10;
+
+    #endregion
+
+    #region Protected Fields
+
     [SerializeField]
-    private int m_health;
+    protected GameObject m_prefab = null;
 
     #endregion
 
