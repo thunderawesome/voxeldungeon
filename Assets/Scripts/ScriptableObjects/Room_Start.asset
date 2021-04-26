@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc5e9e8bfa493a4c898664f88d74d24, type: 3}
+  m_Name: Room_Start
+  m_EditorClassIdentifier: 
+  m_name: Starter Room
+  m_description: 
+  m_isActive: 1
+  m_prefab: {fileID: 176273585325493841, guid: dcfdfdacd5de5cd41ad887c7fcfccc04, type: 3}
