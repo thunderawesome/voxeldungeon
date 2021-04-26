@@ -28,7 +28,7 @@ public class PlayerGroup : MonoBehaviour
 
     public void Initialize()
     {
-        Instantiate(m_players[0], Vector3.up, Quaternion.identity);
+        Instantiate(m_players[0], new Vector3(-3.5f, 1, 0), Quaternion.identity);
     }
 
     #endregion
