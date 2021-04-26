@@ -6,6 +6,7 @@ public class Room : AbstractAsset
 {
     #region Public Properties
     public IReadOnlyCollection<Monster> Monsters => m_monsters;
+    public bool IsCleared => m_isCleared;
 
     #endregion
 
@@ -25,6 +26,8 @@ public class Room : AbstractAsset
     private GameObject m_prefab = null;
     [SerializeField]
     private Monster[] m_monsters;
+
+    private bool m_isCleared = false;
 
     #endregion
 

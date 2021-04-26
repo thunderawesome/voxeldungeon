@@ -7,6 +7,7 @@ public class Dungeon : AbstractAsset
     #region Public Properties
 
     public IReadOnlyCollection<Room> Rooms => m_rooms;
+    public bool IsCleared => m_isCleared;
 
     #endregion
 
@@ -14,6 +15,8 @@ public class Dungeon : AbstractAsset
 
     [SerializeField]
     private Room[] m_rooms;
+
+    private bool m_isCleared = false;
 
     #endregion
 

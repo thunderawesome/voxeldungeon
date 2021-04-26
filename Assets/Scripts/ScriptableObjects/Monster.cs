@@ -6,6 +6,7 @@ public class Monster : Character
 {
     #region Public Properties
     public IReadOnlyCollection<Loot> Loot => m_loot;
+    public bool IsDefeated => m_isDefeated;
 
     #endregion
 
@@ -25,6 +26,8 @@ public class Monster : Character
     private GameObject m_prefab = null;
     [SerializeField]
     private Loot[] m_loot;
+
+    private bool m_isDefeated = false;
 
     #endregion
 
