@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "Loot", menuName = "Battlerock/ScriptableObjects/Loot", order = 1)]
-public class Loot : AbstractAsset
+public class LootModel : AbstractAssetModel
 {
-
     #region Public Methods
 
     public GameObject InstantiatePrefab(Transform targetTransform, bool worldPositionStays)

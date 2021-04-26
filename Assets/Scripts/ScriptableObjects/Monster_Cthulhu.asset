@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df85e018b818da24c8b2805de2db3033, type: 3}
+  m_Name: Monster_Cthulhu
+  m_EditorClassIdentifier: 
+  m_name: Cthulhu
+  m_description: Don't look at 'em too long you might go insane!
+  m_isActive: 0
+  m_health: 15
+  m_damage: 4
+  m_prefab: {fileID: 1609121649408626, guid: 095f73d4ed78de5468ed7b74cbe2db3e, type: 3}
+  m_loot: []

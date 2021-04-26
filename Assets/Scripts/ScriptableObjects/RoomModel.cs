@@ -2,11 +2,10 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Room", menuName = "Battlerock/ScriptableObjects/Room", order = 1)]
-public class Room : AbstractAsset
+public class RoomModel : AbstractAssetModel
 {
     #region Public Properties
-    public IReadOnlyCollection<Monster> Monsters => m_monsters;
-    public bool IsCleared => m_isCleared;
+    public IReadOnlyCollection<MonsterModel> Monsters => m_monsters;
 
     #endregion
 
@@ -21,13 +20,10 @@ public class Room : AbstractAsset
 
     #region Private Fields
 
-
     [SerializeField]
     private GameObject m_prefab = null;
     [SerializeField]
-    private Monster[] m_monsters;
-
-    private bool m_isCleared = false;
+    private MonsterModel[] m_monsters;
 
     #endregion
 

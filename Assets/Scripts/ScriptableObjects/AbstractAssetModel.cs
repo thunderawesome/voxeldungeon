@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class AbstractAsset : ScriptableObject
+public abstract class AbstractAssetModel : ScriptableObject
 {
     #region Public Properties
     public string Name => m_name;

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df85e018b818da24c8b2805de2db3033, type: 3}
+  m_Name: Monster_GelatinousCube
+  m_EditorClassIdentifier: 
+  m_name: GelatinousCube
+  m_description: What's that swimming inside?
+  m_isActive: 0
+  m_health: 8
+  m_damage: 1
+  m_prefab: {fileID: 3270121425912890644, guid: 3309acd7a853f9f418e79ae949ecc169, type: 3}
+  m_loot: []

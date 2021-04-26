@@ -42,6 +42,17 @@ public class RoomManager : MonoBehaviour
     public Task RoomClearAsync(CancellationToken token)
     {
         token.ThrowIfCancellationRequested();
+        if (m_monsters?.Length > 0)
+        {
+            for (int i = 0; i < m_monsters.Length; i++)
+            {
+                if (!m_monsters[i].GetComponent<Monster>().IsDefeated)
+                {
+                    // Restart the loop if there is an undefeated monster
+                    i = -1;
+                }
+            }
+        }
 
         return Task.CompletedTask;
     }

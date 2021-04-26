@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fac69fe8e8588604faf1b00d7a96aa80, type: 3}
-  m_Name: Dungeon_Level1
+  m_Script: {fileID: 11500000, guid: df85e018b818da24c8b2805de2db3033, type: 3}
+  m_Name: Monster_Minotaur
   m_EditorClassIdentifier: 
-  m_name: Level 1 - Dungeon
+  m_name: Minotaur
   m_description: 
-  m_isActive: 1
-  m_rooms:
-  - {fileID: 11400000, guid: df41e4ac7a3b1ce4aabed9e71fdcc0e4, type: 2}
-  - {fileID: 11400000, guid: 5c33bd8c81be5794b85eb372883f559b, type: 2}
+  m_isActive: 0
+  m_health: 10
+  m_damage: 5
+  m_prefab: {fileID: 1013759234203242, guid: 3a29660d97e4571428b9c2ceb498fdbc, type: 3}
+  m_loot: []

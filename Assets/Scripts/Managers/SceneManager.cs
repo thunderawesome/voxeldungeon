@@ -41,11 +41,11 @@ public abstract class SceneManager : MonoBehaviour
         return Task.CompletedTask;
     }
 
-    protected virtual Task RunIntroSequenceAsync(CancellationToken token)
+    protected virtual async Task RunIntroSequenceAsync(CancellationToken token)
     {
         token.ThrowIfCancellationRequested();
 
-        return Task.CompletedTask;
+        
     }
 
     protected virtual Task ShowResultsAsync(CancellationToken token)

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 136602158015840846}
   - component: {fileID: 54704820722904770}
   - component: {fileID: 82263414470712080}
+  - component: {fileID: 8821982006463779249}
   m_Layer: 9
   m_Name: Minotaur
   m_TagString: Untagged
@@ -181,6 +182,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8821982006463779249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013759234203242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98ab6c48c31c03449543f8d33025137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_health: 1
+  m_damage: 1
+  m_model: {fileID: 11400000, guid: a8930c207e140c74f8f66c8dedec47bb, type: 2}
 --- !u!1 &1120805466817584
 GameObject:
   m_ObjectHideFlags: 0

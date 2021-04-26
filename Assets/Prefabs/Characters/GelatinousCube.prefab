@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3270121425912890640}
   - component: {fileID: 3270121425912890643}
   - component: {fileID: 3270121425912890642}
+  - component: {fileID: -6987558878425812769}
   m_Layer: 9
   m_Name: GelatinousCube
   m_TagString: Untagged
@@ -181,6 +182,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-6987558878425812769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3270121425912890644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98ab6c48c31c03449543f8d33025137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_health: 1
+  m_damage: 1
+  m_model: {fileID: 11400000, guid: 73ef3e4e849b0594b9ec1723dba4d30b, type: 2}
 --- !u!114 &3270121426239708563
 MonoBehaviour:
   m_ObjectHideFlags: 0
