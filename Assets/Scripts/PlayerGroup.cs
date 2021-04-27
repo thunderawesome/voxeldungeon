@@ -38,7 +38,7 @@ public class PlayerGroup : MonoBehaviour
             }
 
             m_players[i] = currentPlayer.GetComponent<Monster>();
-        }        
+        }
     }
 
     public Queue<Monster> InitializeCombatants()

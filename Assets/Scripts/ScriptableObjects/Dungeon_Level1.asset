@@ -16,5 +16,5 @@ MonoBehaviour:
   m_description: 
   m_isActive: 1
   m_rooms:
-  - {fileID: 11400000, guid: 5c33bd8c81be5794b85eb372883f559b, type: 2}
+  - {fileID: 11400000, guid: df41e4ac7a3b1ce4aabed9e71fdcc0e4, type: 2}
   - {fileID: 11400000, guid: 5c33bd8c81be5794b85eb372883f559b, type: 2}

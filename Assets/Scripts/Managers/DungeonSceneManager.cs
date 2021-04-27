@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 [RequireComponent(typeof(PlayerGroup))]
 [RequireComponent(typeof(CombatManager))]
@@ -29,6 +30,8 @@ public class DungeonSceneManager : SceneManager
 
     private CombatManager m_combatManager;
 
+    private int m_roomIndex = 0;
+
     #endregion
 
     #region Private Methods
@@ -43,23 +46,40 @@ public class DungeonSceneManager : SceneManager
 
     private async void Awake()
     {
+        InitializeComponents();
+
         using (var tokenSource = new UnityTokenSource())
         {
             var token = tokenSource.Token;
-            await SetupSceneAsync(token, out RoomManager currentRoom);
-            await currentRoom?.SetupRoomAsync(token);
-
-            m_textMesh = GetComponentInChildren<TextMeshPro>();
-
-            m_playerGroup = gameObject.GetComponent<PlayerGroup>();
-            m_playerGroup.Initialize();
-
-            await RunIntroSequenceAsync(token);
-            m_combatManager = GetComponent<CombatManager>();
-            await CombatSequenceAsync(currentRoom, token);
+            await GameLoopAsync(token);
 
             Debug.Log("COMPLETE!");
         }
+    }
+
+    private void InitializeComponents()
+    {
+        m_textMesh = GetComponentInChildren<TextMeshPro>();
+        m_playerGroup = gameObject.GetComponent<PlayerGroup>();
+        m_playerGroup.Initialize();
+        m_combatManager = GetComponent<CombatManager>();
+    }
+
+    private async Task GameLoopAsync(CancellationToken token)
+    {
+        await SetupSceneAsync(token, out RoomManager currentRoom);
+
+        if(currentRoom == null)
+        {
+            await Task.CompletedTask;
+            return;
+        }
+
+        await currentRoom?.SetupRoomAsync(token);
+
+        await RunIntroSequenceAsync(token);
+
+        await CombatSequenceAsync(currentRoom, token);
     }
 
     #endregion
@@ -79,17 +99,15 @@ public class DungeonSceneManager : SceneManager
             {
                 if (m_dungeons[i].IsActive)
                 {
-                    m_currentDungeon = m_dungeons[i];
-                    foreach (var room in m_currentDungeon.Rooms)
+                    if (m_roomIndex < m_dungeons[i].Rooms.Count)
                     {
-                        if (room.IsActive)
-                        {
-                            var roomInstance = room.InstantiatePrefab(transform, true);
-                            currentRoom = roomInstance.GetComponent<RoomManager>();
-                            // Skip out of the loop since we don't want to load all the dungeons at once.
-                            return Task.CompletedTask;
-                        }
+                        m_currentDungeon = m_dungeons[i];
+                        var roomInstance = m_currentDungeon.Rooms.ElementAt(m_roomIndex).InstantiatePrefab(transform, true);
+                        currentRoom = roomInstance.GetComponent<RoomManager>();
                     }
+
+                    // Skip out of the loop since we don't want to load all the dungeons at once.
+                    return Task.CompletedTask;
                 }
             }
         }
@@ -126,6 +144,8 @@ public class DungeonSceneManager : SceneManager
             m_textMesh.text = "You Win!";
             // only show this if the player wins
             await currentRoom.RoomClearAsync(token);
+            m_roomIndex++;
+            await GameLoopAsync(token);
         }
         else if(combatTask.Result == CombatState.Lose)
         {

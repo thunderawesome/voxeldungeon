@@ -45,8 +45,8 @@ public class RoomManager : MonoBehaviour
     public async Task RoomClearAsync(CancellationToken token)
     {
         token.ThrowIfCancellationRequested();
-        
 
+        gameObject.SetActive(false);
 
         await Task.CompletedTask;
     }
