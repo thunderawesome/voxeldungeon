@@ -7,6 +7,7 @@ using UnityEngine;
 using TMPro;
 
 [RequireComponent(typeof(PlayerGroup))]
+[RequireComponent(typeof(CombatManager))]
 public class DungeonSceneManager : SceneManager
 {
     #region Public Properties
@@ -26,9 +27,19 @@ public class DungeonSceneManager : SceneManager
 
     private TextMeshPro m_textMesh;
 
+    private CombatManager m_combatManager;
+
     #endregion
 
     #region Private Methods
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Q))
+        {
+            Application.Quit();
+        }
+    }
 
     private async void Awake()
     {
@@ -44,6 +55,7 @@ public class DungeonSceneManager : SceneManager
             m_playerGroup.Initialize();
 
             await RunIntroSequenceAsync(token);
+            m_combatManager = GetComponent<CombatManager>();
             await CombatSequenceAsync(currentRoom, token);
 
             Debug.Log("COMPLETE!");
@@ -102,7 +114,24 @@ public class DungeonSceneManager : SceneManager
     protected async Task CombatSequenceAsync(RoomManager currentRoom, CancellationToken token)
     {
         token.ThrowIfCancellationRequested();
-        await currentRoom.RoomClearAsync(token);
+
+        m_combatManager.team1 = m_playerGroup.InitializeCombatants();
+        m_combatManager.team2 = currentRoom.InitializeCombatants();
+
+        var combatTask = m_combatManager.RunCombatSequenceAsync(token);
+        await combatTask;
+
+        if (combatTask.Result == CombatState.Win)
+        {
+            m_textMesh.text = "You Win!";
+            // only show this if the player wins
+            await currentRoom.RoomClearAsync(token);
+        }
+        else if(combatTask.Result == CombatState.Lose)
+        {
+            m_textMesh.text = "You lose...";
+        }
+        await ShowResultsAsync(token);
     }
 
     protected override Task ShowResultsAsync(CancellationToken token)

@@ -8,9 +8,9 @@ public class EntityModel : AbstractAssetModel
 
     #endregion
 
-    #region Protected Methods
+    #region Public Methods
 
-    protected GameObject InstantiatePrefab(Transform targetTransform, bool worldPositionStays)
+    public GameObject InstantiatePrefab(Transform targetTransform, bool worldPositionStays)
     {
         return Instantiate(m_prefab, targetTransform, worldPositionStays).Initialize(this);
     }

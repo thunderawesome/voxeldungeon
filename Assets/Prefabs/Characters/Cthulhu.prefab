@@ -547,7 +547,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609121649408626}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4212023740493702}
@@ -714,6 +714,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_health: 1
   m_damage: 1
+  m_hitSound: {fileID: 8300000, guid: dbc2d305881d00441ab0ad605bfe4d27, type: 3}
+  m_explosionSound: {fileID: 8300000, guid: 0051bb7498f6ee04d9fccf2ac45179a6, type: 3}
   m_model: {fileID: 11400000, guid: 16ac6087e577e0548af70a124651ffd6, type: 2}
 --- !u!1 &1625371658719836
 GameObject:

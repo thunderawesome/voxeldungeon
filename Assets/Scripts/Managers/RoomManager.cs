@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -8,11 +11,11 @@ public class RoomManager : MonoBehaviour
     #region Private Fields
 
     [SerializeField]
-    private GameObject[] m_monsters;
+    private Monster[] m_monsters;
 
     #endregion
 
-    #region Protected Methods    
+    #region Public Methods    
 
     /// <summary>
     /// Monsters should be added to a room and their gameobjects disabled
@@ -28,7 +31,7 @@ public class RoomManager : MonoBehaviour
             // Spawn the monsters in a room
             for (int i = 0; i < m_monsters.Length; i++)
             {
-                m_monsters[i].SetActive(true);
+                m_monsters[i].gameObject.SetActive(true);
             }
         }
         else
@@ -39,22 +42,18 @@ public class RoomManager : MonoBehaviour
         return Task.CompletedTask;
     }
 
-    public Task RoomClearAsync(CancellationToken token)
+    public async Task RoomClearAsync(CancellationToken token)
     {
         token.ThrowIfCancellationRequested();
-        if (m_monsters?.Length > 0)
-        {
-            for (int i = 0; i < m_monsters.Length; i++)
-            {
-                if (!m_monsters[i].GetComponent<Monster>().IsDefeated)
-                {
-                    // Restart the loop if there is an undefeated monster
-                    i = -1;
-                }
-            }
-        }
+        
 
-        return Task.CompletedTask;
+
+        await Task.CompletedTask;
+    }
+
+    public Queue<Monster> InitializeCombatants()
+    {
+        return new Queue<Monster>(m_monsters);
     }
 
     #endregion

@@ -5,14 +5,14 @@ public class PlayerGroup : MonoBehaviour
 {
     #region Public Properties
 
-    public IReadOnlyCollection<GameObject> Players => m_players;
+    public IReadOnlyCollection<Monster> Players => m_players;
 
     #endregion
 
     #region Private Fields
 
     [SerializeField]
-    private List<GameObject> m_players;
+    private List<Monster> m_players;
 
     [SerializeField]
     private float m_followThreshold = 3f;
@@ -28,7 +28,22 @@ public class PlayerGroup : MonoBehaviour
 
     public void Initialize()
     {
-        Instantiate(m_players[0], new Vector3(-3.5f, 1, 0), Quaternion.identity);
+        for (int i = 0; i < m_players.Count; i++)
+        {
+            var currentPlayer = m_players[i].Model.InstantiatePrefab(transform, true);
+
+            if (i != 0)
+            {
+                currentPlayer.transform.position = m_players[i - 1].transform.position + new Vector3(-m_followThreshold, 1, 0);
+            }
+
+            m_players[i] = currentPlayer.GetComponent<Monster>();
+        }        
+    }
+
+    public Queue<Monster> InitializeCombatants()
+    {
+        return new Queue<Monster>(m_players);
     }
 
     #endregion

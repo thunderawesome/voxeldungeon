@@ -62,7 +62,7 @@ PrefabInstance:
     - target: {fileID: 7414415070396540708, guid: ebedc39515271f145b8d18cff6efa5b7, type: 3}
       propertyPath: m_monsters.Array.data[0]
       value: 
-      objectReference: {fileID: 4258906461106755171}
+      objectReference: {fileID: 4716622559670557112}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebedc39515271f145b8d18cff6efa5b7, type: 3}
 --- !u!4 &664825515989538027 stripped
@@ -80,6 +80,10 @@ PrefabInstance:
     - target: {fileID: 1013759234203242, guid: 3a29660d97e4571428b9c2ceb498fdbc, type: 3}
       propertyPath: m_Name
       value: Minotaur
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013759234203242, guid: 3a29660d97e4571428b9c2ceb498fdbc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4159259919230994, guid: 3a29660d97e4571428b9c2ceb498fdbc, type: 3}
       propertyPath: m_RootOrder
@@ -127,8 +131,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a29660d97e4571428b9c2ceb498fdbc, type: 3}
---- !u!1 &4258906461106755171 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1013759234203242, guid: 3a29660d97e4571428b9c2ceb498fdbc, type: 3}
+--- !u!114 &4716622559670557112 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8821982006463779249, guid: 3a29660d97e4571428b9c2ceb498fdbc, type: 3}
   m_PrefabInstance: {fileID: 4258495252700629001}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98ab6c48c31c03449543f8d33025137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

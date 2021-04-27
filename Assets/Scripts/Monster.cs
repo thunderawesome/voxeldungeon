@@ -2,6 +2,8 @@
 
 public class Monster : Entity
 {
+    public MonsterModel Model => m_model;
+
     [SerializeField]
     private MonsterModel m_model;
 

@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: Easy Room
   m_description: Monsters are not much of a challenge in here.
+  m_isActive: 1
   m_prefab: {fileID: 176273585325493841, guid: e06b9b32fa33db14d89fc8947df9316c, type: 3}
+  m_monsters: []

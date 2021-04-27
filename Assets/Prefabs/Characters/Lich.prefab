@@ -197,6 +197,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_health: 1
   m_damage: 1
+  m_hitSound: {fileID: 8300000, guid: dbc2d305881d00441ab0ad605bfe4d27, type: 3}
+  m_explosionSound: {fileID: 8300000, guid: 0051bb7498f6ee04d9fccf2ac45179a6, type: 3}
   m_model: {fileID: 11400000, guid: be11f7c645061394a8cc64b52c4d7270, type: 2}
 --- !u!95 &7731963540427088462
 Animator:
